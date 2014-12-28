@@ -120,7 +120,7 @@ For more information about `moment#subtract`, check out <http://momentjs.com/doc
 
 ## Chaining
 
-There's some build in support for chaining, like so:
+There's some built-in (and not thoroughly tested) support for chaining, like so:
 
 ```html
 <span>{{ someDate | moment add "2 years, 8 days" subtract "3 hours" "ddd, hA" }}</span>
