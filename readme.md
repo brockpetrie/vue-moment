@@ -1,0 +1,135 @@
+# vue-moment
+
+Handy [Moment.js](http://www.momentjs.com) filters for your [Vue.js](http://vuejs.org/) project.
+
+
+## Installation
+
+Download [Moment.js](http://www.momentjs.com) and place it in your project directory along with `vue-moment`, and include both in your application.
+
+```html
+<script src="../moment/moment.min.js"></script>
+<script src="../vue-moment.min.js"></script>
+```
+
+
+## Usage
+
+Simply set `moment` as the filtering function and you're good to go. At least one argument is expected, which the filter assumes to be a `format` string if the argument doesn't match any of the other filtering methods. 
+
+```html
+<span>{{ someDate | moment "dddd, MMMM Do YYYY" }}</span>
+```
+
+
+## Filtering Methods
+
+### format (default)
+
+This is the default filtering option. Formats the date against a string of tokens. See <http://momentjs.com/docs/#/displaying/format/> for a list of tokens and examples. 
+
+**Default**
+
+```html
+<span>{{ someDate | moment "YYYY" }}</span>
+<!-- e.g. "2010" -->
+<span>{{ someDate | moment "ddd, hA" }}</span>
+<!-- e.g. "Sun, 3PM" -->
+<span>{{ someDate | moment "dddd, MMMM Do YYYY, h:mm:ss a" }}</span>
+<!-- e.g. "Sunday, February 14th 2010, 3:25:50 pm" -->
+```
+
+For more information about `moment#format`, check out <http://momentjs.com/docs/#/displaying/format/>.
+
+
+### from
+
+Display a moment in relative time, either from now or from a specified date.
+
+**Default** (calculates from current time)
+
+```html
+<span>{{ someDate | moment from now }}</span>
+<!-- or shorthanded -->
+<span>{{ someDate | moment from }}</span>
+```
+
+**With a reference time given**
+
+```html
+<span>{{ someDate | moment from "Jan. 11th, 1985" }}</span>
+```
+
+**With suffix hidden** (e.g. '4 days ago' -> '4 days')
+
+```html
+<span>{{ someDate | moment from now true }}</span>
+<!-- or -->
+<span>{{ someDate | moment from true }}</span>
+<!-- or with a reference time -->
+<span>{{ someDate | moment from "Jan. 11th, 2000" true }}</span>
+```
+
+For more information about `moment#fromNow` and `moment#from`, check out <http://momentjs.com/docs/#/displaying/fromnow/> and <http://momentjs.com/docs/#/displaying/from/>.
+
+
+### calendar
+
+Formats a date with different strings depending on how close to a certain date (today by default) the date is.
+
+**Default** (calculates from current time)
+
+```html
+<span>{{ someDate | moment calendar }}</span>
+<!-- e.g. "Last Monday 2:30 AM" -->
+```
+
+**With a reference time given**
+
+```html
+<span>{{ someDate | moment calendar "July 10 2011" }}</span>
+<!-- e.g. "7/10/2011" -->
+```
+
+For more information about `moment#calendar`, check out <http://momentjs.com/docs/#/displaying/calendar-time/>.
+
+
+### add
+
+Mutates the original moment by adding time.
+
+```html
+<span>{{ someDate | moment add "7 days" }}</span>
+<!-- or with multiple keys -->
+<span>{{ someDate | moment add "1 year, 3 months, 30 weeks, 10 days" }}</span>
+```
+
+For more information about `moment#add`, check out <http://momentjs.com/docs/#/manipulating/add/>.
+
+
+### subtract
+
+Works the same as `add`, but mutates the original moment by subtracting time.
+
+```html
+<span>{{ someDate | moment subtract "3 hours" }}</span>
+```
+
+For more information about `moment#subtract`, check out <http://momentjs.com/docs/#/manipulating/subtract/>.
+
+
+## Chaining
+
+There's some build in support for chaining, like so:
+
+```html
+<span>{{ someDate | moment add "2 years, 8 days" subtract "3 hours" "ddd, hA" }}</span>
+```
+
+This would add 2 years and 8 months to the date, then subtract 3 hours, then format the resulting date.
+
+
+
+## Configuration
+
+`vue-moment` should respect any global Moment customizations, including i18n locales. For more info, check out <http://momentjs.com/docs/#/customization/>.
