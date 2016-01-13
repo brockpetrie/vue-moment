@@ -49,25 +49,25 @@ Display a moment in relative time, either from now or from a specified date.
 **Default** (calculates from current time)
 
 ```html
-<span>{{ someDate | moment from now }}</span>
+<span>{{ someDate | moment "from" "now" }}</span>
 <!-- or shorthanded -->
-<span>{{ someDate | moment from }}</span>
+<span>{{ someDate | moment "from" }}</span>
 ```
 
 **With a reference time given**
 
 ```html
-<span>{{ someDate | moment from "Jan. 11th, 1985" }}</span>
+<span>{{ someDate | moment "from" "Jan. 11th, 1985" }}</span>
 ```
 
 **With suffix hidden** (e.g. '4 days ago' -> '4 days')
 
 ```html
-<span>{{ someDate | moment from now true }}</span>
+<span>{{ someDate | moment "from" "now" true }}</span>
 <!-- or -->
-<span>{{ someDate | moment from true }}</span>
+<span>{{ someDate | moment "from" true }}</span>
 <!-- or with a reference time -->
-<span>{{ someDate | moment from "Jan. 11th, 2000" true }}</span>
+<span>{{ someDate | moment "from" "Jan. 11th, 2000" true }}</span>
 ```
 
 For more information about `moment#fromNow` and `moment#from`, check out <http://momentjs.com/docs/#/displaying/fromnow/> and <http://momentjs.com/docs/#/displaying/from/>.
@@ -80,14 +80,14 @@ Formats a date with different strings depending on how close to a certain date (
 **Default** (calculates from current time)
 
 ```html
-<span>{{ someDate | moment calendar }}</span>
+<span>{{ someDate | moment "calendar" }}</span>
 <!-- e.g. "Last Monday 2:30 AM" -->
 ```
 
 **With a reference time given**
 
 ```html
-<span>{{ someDate | moment calendar "July 10 2011" }}</span>
+<span>{{ someDate | moment "calendar" "July 10 2011" }}</span>
 <!-- e.g. "7/10/2011" -->
 ```
 
@@ -99,9 +99,9 @@ For more information about `moment#calendar`, check out <http://momentjs.com/doc
 Mutates the original moment by adding time.
 
 ```html
-<span>{{ someDate | moment add "7 days" }}</span>
+<span>{{ someDate | moment "add" "7 days" }}</span>
 <!-- or with multiple keys -->
-<span>{{ someDate | moment add "1 year, 3 months, 30 weeks, 10 days" }}</span>
+<span>{{ someDate | moment "add" "1 year, 3 months, 30 weeks, 10 days" }}</span>
 ```
 
 For more information about `moment#add`, check out <http://momentjs.com/docs/#/manipulating/add/>.
@@ -112,7 +112,7 @@ For more information about `moment#add`, check out <http://momentjs.com/docs/#/m
 Works the same as `add`, but mutates the original moment by subtracting time.
 
 ```html
-<span>{{ someDate | moment subtract "3 hours" }}</span>
+<span>{{ someDate | moment "subtract" "3 hours" }}</span>
 ```
 
 For more information about `moment#subtract`, check out <http://momentjs.com/docs/#/manipulating/subtract/>.
@@ -123,7 +123,7 @@ For more information about `moment#subtract`, check out <http://momentjs.com/doc
 There's some built-in (and not thoroughly tested) support for chaining, like so:
 
 ```html
-<span>{{ someDate | moment add "2 years, 8 days" subtract "3 hours" "ddd, hA" }}</span>
+<span>{{ someDate | moment "add" "2 years, 8 days" "subtract" "3 hours" "ddd, hA" }}</span>
 ```
 
 This would add 2 years and 8 months to the date, then subtract 3 hours, then format the resulting date.
