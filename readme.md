@@ -63,11 +63,11 @@ Display a moment in relative time, either from now or from a specified date.
 **With suffix hidden** (e.g. '4 days ago' -> '4 days')
 
 ```html
-<span>{{ someDate | moment "from" "now" true }}</span>
+<span>{{ someDate | moment "from" "now" "true" }}</span>
 <!-- or -->
-<span>{{ someDate | moment "from" true }}</span>
+<span>{{ someDate | moment "from" "true" }}</span>
 <!-- or with a reference time -->
-<span>{{ someDate | moment "from" "Jan. 11th, 2000" true }}</span>
+<span>{{ someDate | moment "from" "Jan. 11th, 2000" "true" }}</span>
 ```
 
 For more information about `moment#fromNow` and `moment#from`, check out <http://momentjs.com/docs/#/displaying/fromnow/> and <http://momentjs.com/docs/#/displaying/from/>.
