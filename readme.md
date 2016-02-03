@@ -11,7 +11,13 @@ Download [Moment.js](http://www.momentjs.com) and place it in your project direc
 <script src="../moment/moment.min.js"></script>
 <script src="../vue-moment.min.js"></script>
 ```
+### Or
 
+Install module with NPM and install plugin like so  
+
+```js
+Vue.use(require('vue-moment'));
+```
 
 ## Usage
 
