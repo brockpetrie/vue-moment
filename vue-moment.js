@@ -2,6 +2,18 @@ var moment = require('moment');
 
 module.exports = {
 	install: function (Vue) {
+		Object.defineProperties(Vue.prototype, {
+			$moment: {
+				get() {
+					return Vue.moment.bind(this);
+				},
+			},
+		});
+
+		Vue.moment = function(data) {
+			return moment(data);
+		}
+
 		Vue.filter('moment', function() {
 			var args = Array.prototype.slice.call(arguments),
 				value = args.shift(),
