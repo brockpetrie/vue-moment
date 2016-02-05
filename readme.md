@@ -2,16 +2,11 @@
 
 Handy [Moment.js](http://www.momentjs.com) filters for your [Vue.js](http://vuejs.org/) project.
 
+### Notes
+
+* This plugin is based on this [repo](http://github.com/brockpetrie/vue-moment)
 
 ## Installation
-
-Download [Moment.js](http://www.momentjs.com) and place it in your project directory along with `vue-moment`, and include both in your application.
-
-```html
-<script src="../moment/moment.min.js"></script>
-<script src="../vue-moment.min.js"></script>
-```
-### Or
 
 Install module with NPM and install plugin like so  
 
@@ -21,7 +16,7 @@ Vue.use(require('vue-moment'));
 
 ## Usage
 
-Simply set `moment` as the filtering function and you're good to go. At least one argument is expected, which the filter assumes to be a `format` string if the argument doesn't match any of the other filtering methods. 
+Simply set `moment` as the filtering function and you're good to go. At least one argument is expected, which the filter assumes to be a `format` string if the argument doesn't match any of the other filtering methods.
 
 ```html
 <span>{{ someDate | moment "dddd, MMMM Do YYYY" }}</span>
@@ -32,7 +27,7 @@ Simply set `moment` as the filtering function and you're good to go. At least on
 
 ### format (default)
 
-This is the default filtering option. Formats the date against a string of tokens. See <http://momentjs.com/docs/#/displaying/format/> for a list of tokens and examples. 
+This is the default filtering option. Formats the date against a string of tokens. See <http://momentjs.com/docs/#/displaying/format/> for a list of tokens and examples.
 
 **Default**
 
