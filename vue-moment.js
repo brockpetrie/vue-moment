@@ -4,7 +4,7 @@ module.exports = {
 	install: function (Vue) {
 		Object.defineProperties(Vue.prototype, {
 			$moment: {
-				get() {
+				get: function() {
 					return Vue.moment.bind(this);
 				},
 			},
