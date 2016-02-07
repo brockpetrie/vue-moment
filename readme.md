@@ -2,17 +2,15 @@
 
 Handy [Moment.js](http://www.momentjs.com) filters for your [Vue.js](http://vuejs.org/) project.
 
-### Notes
-
-* This plugin is based on this [repo](http://github.com/brockpetrie/vue-moment)
-
 ## Installation
 
-Install module with NPM and install plugin like so  
+Either install via NPM and require plugin like so  
 
 ```js
 Vue.use(require('vue-moment'));
 ```
+
+or load `vue-moment.min.js` along with `moment.js` the old fashioned way.
 
 ## Usage
 
