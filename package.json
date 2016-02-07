@@ -1,0 +1,31 @@
+{
+  "name": "vue-moment",
+  "version": "1.0.3",
+  "description": "Handy Moment.js filters for your Vue.js project",
+  "main": "vue-moment.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brockreece/vue-moment.git"
+  },
+  "keywords": [
+    "vue",
+    "custom",
+    "date",
+    "time",
+    "filter",
+    "moment.js"
+  ],
+  "author": "brockpetrie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brockreece/vue-moment/issues"
+  },
+  "homepage": "https://github.com/brockreece/vue-moment#readme",
+  "dependencies": {
+    "moment": "^2.11.1",
+    "moment-business-days": "0.0.10"
+  }
+}
