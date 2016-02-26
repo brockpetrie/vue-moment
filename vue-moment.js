@@ -1,7 +1,7 @@
-var moment = require('moment-business-days');
+var moment = require('moment');
 
 module.exports = {
-	install: function (Vue) {
+	install: function (Vue, options) {
 		Object.defineProperties(Vue.prototype, {
 			$moment: {
 				get: function() {
@@ -9,6 +9,10 @@ module.exports = {
 				},
 			},
 		});
+
+		if (options.moment) {
+			moment = options.moment
+		}
 
 		Vue.moment = function(data) {
 			return moment(data);
@@ -98,38 +102,6 @@ module.exports = {
 						}
 
 						date = date.calendar(referenceTime);
-						break;
-
-					case 'add business days':
-
-						// Mutates the original moment by adding business days.
-						// https://www.npmjs.com/package/moment-business-days
-
-						date = date.businessAdd(args.shift());
-						break;
-
-					case 'subtract business days':
-
-						// Mutates the original moment by subtracting business days.
-						// https://www.npmjs.com/package/moment-business-days
-
-						date = date.businessSubtract(args.shift());
-						break;
-
-					case 'next business day':
-
-						// Mutates the original moment by finding the next business day.
-						// https://www.npmjs.com/package/moment-business-days
-
-						date = date.nextBusinessDay();
-						break;
-
-					case 'previous business day':
-
-						// Mutates the original moment by finding the previous working day.
-						// https://www.npmjs.com/package/moment-business-days
-
-						date = date.prevBusinessDay();
 						break;
 
 					default:
