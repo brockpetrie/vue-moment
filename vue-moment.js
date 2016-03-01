@@ -10,7 +10,7 @@ module.exports = {
 			},
 		});
 
-		if (options.moment) {
+		if (options && options.moment) {
 			moment = options.moment
 		}
 
