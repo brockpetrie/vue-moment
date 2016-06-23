@@ -18,8 +18,19 @@ Simply set `moment` as the filtering function and you're good to go. At least on
 
 ```html
 <span>{{ someDate | moment "dddd, MMMM Do YYYY" }}</span>
+<!-- or create a new date from 'now' -->
+<span>{{ new Date() | moment "dddd, MMMM Do YYYY" }}</span>
 ```
 
+## Passing Your Date
+
+Moment.js expects your input to be either: a valid ISO 8601 formatted string (see <http://momentjs.com/docs/#/parsing/string/>), a valid `Date` object, or a date string with an accompanying format pattern (i.e. when you know the format of the date input). For the latter, `vue-moment` allows you to pass your date and format pattern(s) as an array, like such:
+
+```html
+<span>{{ [ someDate, "MM.DD.YY" ] | moment "dddd, MMMM Do YYYY" }}</span>
+<!-- or when you want to parse against more than one pattern -->
+<span>{{ [ someDate, ["MM.DD.YY", "MM-DD-YY", "MM-DD-YYYY"] ] | moment "dddd, MMMM Do YYYY" }}</span>
+```
 
 ## Filtering Methods
 
