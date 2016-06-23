@@ -26,7 +26,7 @@ module.exports = {
 			if (!date.isValid()) return '';
 
 			function parse() {
-				var args = Array.prototype.slice.call(arguments).map(function(str) { return str.replace(/^("|')|("|')$/g, ''); }),
+				var args = Array.prototype.slice.call(arguments),
 					method = args.shift();
 
 				switch (method) {
