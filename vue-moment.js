@@ -40,8 +40,8 @@ module.exports = {
 			}
 
 			function parse() {
-				var args = Array.prototype.slice.call(arguments);
-				method = args.shift();
+				var args = Array.prototype.slice.call(arguments),
+					method = args.shift();
 
 				switch (method) {
 					case 'add':
