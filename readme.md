@@ -143,3 +143,16 @@ This would add 2 years and 8 months to the date, then subtract 3 hours, then for
 ## Configuration
 
 `vue-moment` should respect any global Moment customizations, including i18n locales. For more info, check out <http://momentjs.com/docs/#/customization/>.
+
+You can also pass a custom Moment object through with the plugin options. This technique is especially useful for overcoming the browserify locale bug demonstrated in the docs <http://momentjs.com/docs/#/use-it/browserify/>
+
+```js
+const moment = require('moment')
+require('moment/locale/es')
+
+Vue.use(require('vue-moment'), {
+    moment
+})
+
+console.log(Vue.moment().locale()) //es
+```
