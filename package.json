@@ -29,6 +29,6 @@
     "moment": "^2.11.1"
   },
   "peerDependencies": {
-    "vue": "^1.x.x"
+    "vue": ">=1.x.x"
   }
 }
