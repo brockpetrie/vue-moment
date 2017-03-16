@@ -4,13 +4,11 @@ Handy [Moment.js](http://www.momentjs.com) filters for your [Vue.js](http://vuej
 
 ## Installation
 
-Either install via NPM and require plugin like so  
+Install via NPM and require the plugin like so:
 
 ```js
 Vue.use(require('vue-moment'));
 ```
-
-or load `vue-moment.min.js` along with `moment.js` the old fashioned way.
 
 ## Usage
 
