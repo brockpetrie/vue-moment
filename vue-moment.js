@@ -102,6 +102,32 @@ module.exports = {
 
 						date = date.fromNow(removeSuffix);
 						break;
+						
+					case 'diff':
+
+						// Mutates the original moment by doing a difference with another date.
+						// http://momentjs.com/docs/#/displaying/difference/
+
+						var dateDiff = 'now';
+						if (args[0] == 'now') args.shift();
+
+						if (moment(args[0]).isValid()) {
+							dateDiff = moment(args.shift());
+						}
+
+						var units = '';
+						if (args[0]) {
+							var units = args.shift();
+						}
+
+						var floatingValue = false;
+						if (args[0] === true) {
+							args.shift();
+							var floatingValue = true;
+						}
+
+						date = date.diff(dateDiff, units, floatingValue)
+						break;
 
 					case 'calendar':
 
