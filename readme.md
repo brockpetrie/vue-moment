@@ -1,6 +1,6 @@
 # vue-moment
 
-Handy [Moment.js](http://www.momentjs.com) filters for your [Vue.js](http://vuejs.org/) project.
+Handy [Moment.js](http://www.momentjs.com) filters for your [Vue.js](http://vuejs.org/) project. With timezone integration.
 
 ## Installation
 
@@ -18,6 +18,7 @@ Simply set `moment` as the filtering function and you're good to go. At least on
 <span>{{ someDate | moment("dddd, MMMM Do YYYY") }}</span>
 <!-- or create a new date from 'now' -->
 <span>{{ new Date() | moment("dddd, MMMM Do YYYY") }}</span>
+<!-- or with added timezone support -->
 ```
 
 ## Passing Your Date

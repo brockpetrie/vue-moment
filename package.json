@@ -19,14 +19,17 @@
     "moment",
     "moment.js"
   ],
-  "author": "brockpetrie",
+  "author": [
+    "brockpetrie",
+    "ss44"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/brockpetrie/vue-moment/issues"
   },
   "homepage": "https://github.com/brockpetrie/vue-moment#readme",
   "dependencies": {
-    "moment": "^2.11.1"
+    "moment-timezone": "^0.5.13"
   },
   "peerDependencies": {
     "vue": ">=1.x.x"
