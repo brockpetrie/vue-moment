@@ -1,6 +1,6 @@
 {
   "name": "vue-moment",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "Handy Moment.js filters for your Vue.js project",
   "main": "vue-moment.js",
   "scripts": {
@@ -19,16 +19,19 @@
     "moment",
     "moment.js"
   ],
-  "author": "brockpetrie",
+  "author": [
+    "brockpetrie",
+    "ss44"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/brockpetrie/vue-moment/issues"
   },
   "homepage": "https://github.com/brockpetrie/vue-moment#readme",
   "dependencies": {
-    "moment": "^2.11.1"
+    "moment-timezone": "^0.5.13"
   },
   "peerDependencies": {
-    "vue": "^1.x.x"
+    "vue": ">=1.x.x"
   }
 }
