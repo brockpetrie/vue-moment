@@ -14,9 +14,7 @@ module.exports = {
 			moment = options.moment
 		}
 
-		Vue.moment = function(data) {
-			return moment(data);
-		}
+		Vue.moment = moment;
 
 		Vue.filter('moment', function() {
 			var args = Array.prototype.slice.call(arguments),
