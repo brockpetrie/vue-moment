@@ -5,7 +5,7 @@ module.exports = {
 		Object.defineProperties(Vue.prototype, {
 			$moment: {
 				get: function() {
-					return Vue.moment.bind(this);
+					return moment;
 				},
 			},
 		});
