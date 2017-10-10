@@ -5,7 +5,7 @@ module.exports = {
 		Object.defineProperties(Vue.prototype, {
 			$moment: {
 				get: function() {
-					return Vue.moment.bind(this);
+					return moment;
 				},
 			},
 		});
@@ -14,9 +14,7 @@ module.exports = {
 			moment = options.moment
 		}
 
-		Vue.moment = function(data) {
-			return moment(data);
-		}
+		Vue.moment = moment;
 
 		Vue.filter('moment', function() {
 			var args = Array.prototype.slice.call(arguments),
