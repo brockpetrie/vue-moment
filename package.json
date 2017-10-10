@@ -1,6 +1,6 @@
 {
   "name": "vue-moment",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "Handy Moment.js filters for your Vue.js project",
   "main": "vue-moment.js",
   "scripts": {
