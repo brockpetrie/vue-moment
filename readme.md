@@ -1,4 +1,5 @@
 # vue-moment
+[![npm version](https://badge.fury.io/js/vue-moment.svg)](https://badge.fury.io/js/vue-moment)
 
 Handy [Moment.js](http://www.momentjs.com) filters for your [Vue.js](http://vuejs.org/) project.
 
