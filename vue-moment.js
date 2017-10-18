@@ -50,7 +50,7 @@ module.exports = {
 						var addends = args.shift()
 										  .split(',')
 										  .map(Function.prototype.call, String.prototype.trim);
-						let obj = {};
+						var obj = {};
 						for (var n = 0; n < addends.length; n++) {
 							var addend = addends[n].split(' ');
 							obj[addend[1]] = addend[0];
