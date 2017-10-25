@@ -9,7 +9,7 @@ Install via NPM and
 
 ```sh
 $ npm install vue-moment
-``
+```
 
 Require the plugin like so:
 
