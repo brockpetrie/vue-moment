@@ -142,6 +142,12 @@ module.exports = {
 						date = date.calendar(referenceTime);
 						break;
 
+					case 'timezone':
+						// Mutates the original moment by converting to a new timezone.
+						// https://momentjs.com/timezone/docs/#/using-timezones/converting-to-zone/
+						date = date.tz(args.shift());
+						break;
+
 					default:
 						// Format
 						// Formats a date by taking a string of tokens and replacing them with their corresponding values.
