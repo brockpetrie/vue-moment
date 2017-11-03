@@ -39,6 +39,7 @@
     "jest": "^21.2.1",
     "jest-serializer-vue": "^0.2.0",
     "jest-vue": "^0.8.1",
+    "moment-timezone": "^0.5.14",
     "vue": "^2.5.2"
   },
   "jest": {
