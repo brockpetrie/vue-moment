@@ -1,8 +1,10 @@
 import Vue from 'vue/dist/vue'
 import VueMoment from '../vue-moment'
-import moment from 'moment'
+import moment from 'moment-timezone'
 
-Vue.use(VueMoment)
+Vue.use(VueMoment, {
+    moment,
+})
 
 const now = moment()
 const tomorrow = moment().add(1, 'day')
@@ -91,6 +93,14 @@ describe('VueMoment', () => {
                 vm.args = ['subtract', '1 day']
                 vm.$nextTick(() => {
                     expect(vm.$el.textContent).toContain(now.clone().subtract(1, 'days').toISOString())
+                    done()
+                })
+            }) 
+
+            it('timezone', (done) => {
+                vm.args = ['timezone', 'America/Los_Angeles', '']
+                vm.$nextTick(() => {
+                    expect(vm.$el.textContent).toContain(now.clone().tz('America/Los_Angeles').format())
                     done()
                 })
             }) 
