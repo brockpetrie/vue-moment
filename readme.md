@@ -37,6 +37,8 @@ Moment.js expects your input to be either: a valid ISO 8601 formatted string (se
 <span>{{ [ someDate, ["MM.DD.YY", "MM-DD-YY", "MM-DD-YYYY"] ] | moment("dddd, MMMM Do YYYY") }}</span>
 ```
 
+As of 3.0.0, passing an empty or invalid input will no longer initiate moment with a new `Date` object.
+
 ## Filtering Methods
 
 ### format (default)
