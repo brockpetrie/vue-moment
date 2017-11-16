@@ -31,7 +31,7 @@ module.exports = {
 				date = moment(input);
 			}
 
-			if (!date.isValid()) {
+			if (!input || !date.isValid()) {
 				// Log a warning if moment couldn't reconcile the input. Better than throwing an error?
 				console.warn('Could not build a valid `moment` object from input.');
 				return input;
