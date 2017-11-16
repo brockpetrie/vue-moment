@@ -6,7 +6,7 @@ Vue.use(VueMoment, {
     moment,
 })
 
-const now = moment()
+let now = moment()
 const tomorrow = moment().add(1, 'day')
 
 const vm = new Vue({
@@ -117,4 +117,69 @@ describe('VueMoment', () => {
         })
     })
 
+    describe('handle inputs', () => {
+        beforeEach(() => {
+            global.console.warn = jest.fn()  
+        })
+
+        afterAll(() => {
+            vm.now = moment()
+        }) 
+
+        it('handles string', (done) => {
+            vm.now = '2017-01-01'
+            vm.args = ['YYYY-MM-DD']
+            vm.$nextTick(() => {
+                expect(console.warn).not.toBeCalled()
+                expect(vm.$el.textContent).toContain('2017-01-01')                
+                done()
+            })
+        })
+        
+        it('handles object', (done) => {
+            vm.now = {y: 2017, m: 1, d: 1}
+            vm.args = ['YYYY-MM-DD']
+            vm.$nextTick(() => {
+                expect(console.warn).not.toBeCalled()
+                expect(vm.$el.textContent).toContain('2017-01-01')                
+                done()
+            })
+        })
+
+        it('handles Date object', (done) => {
+            vm.now = new Date(2017, 0, 1);
+            vm.args = ['YYYY-MM-DD']
+            vm.$nextTick(() => {
+                expect(console.warn).not.toBeCalled()
+                expect(vm.$el.textContent).toContain('2017-01-01')                
+                done()
+            })
+        })
+
+        it('handles Moment object', (done) => {
+            vm.now = moment('2017-01-01')
+            vm.args = ['YYYY-MM-DD']
+            vm.$nextTick(() => {
+                expect(console.warn).not.toBeCalled()
+                expect(vm.$el.textContent).toContain('2017-01-01')                
+                done()
+            })
+        })
+
+        it('handles undefined', (done) => {
+            vm.now = undefined
+            vm.$nextTick(() => {
+                expect(console.warn).toBeCalled()
+                done()
+            })
+        })
+        
+        it('handles invalid string', (done) => {
+            vm.now = 'foo'
+            vm.$nextTick(() => {
+                expect(console.warn).toBeCalled()
+                done()
+            })
+        })
+    })
 })
