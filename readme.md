@@ -136,7 +136,7 @@ For more information about `moment#subtract`, check out <http://momentjs.com/doc
 
 ### timezone
 
-Convert the date to a certian timezone
+Convert the date to a certain timezone
 
 ```html
 <span>{{ date | moment('timezone', 'America/Los_Angeles', 'LLLL ss')}}</span>
