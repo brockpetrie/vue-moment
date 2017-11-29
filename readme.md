@@ -146,6 +146,8 @@ Convert the date to a certian timezone
 
 ```js
 // main.js
+import Vue from 'vue'
+import VueMoment from 'vue-moemnt'
 import moment from 'moment-timezone'
 
 Vue.use(VueMoment, {
