@@ -147,7 +147,7 @@ Convert the date to a certain timezone
 ```js
 // main.js
 import Vue from 'vue'
-import VueMoment from 'vue-moemnt'
+import VueMoment from 'vue-moment'
 import moment from 'moment-timezone'
 
 Vue.use(VueMoment, {
@@ -156,6 +156,7 @@ Vue.use(VueMoment, {
 ```
 
 For more information about `moment#timezone`, check out <https://momentjs.com/timezone/docs/#/using-timezones/converting-to-zone/>.
+
 
 ## Chaining
 
@@ -166,7 +167,6 @@ There's some built-in (and not thoroughly tested) support for chaining, like so:
 ```
 
 This would add 2 years and 8 months to the date, then subtract 3 hours, then format the resulting date.
-
 
 
 ## Configuration
