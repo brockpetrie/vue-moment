@@ -134,6 +134,29 @@ Works the same as `add`, but mutates the original moment by subtracting time.
 
 For more information about `moment#subtract`, check out <http://momentjs.com/docs/#/manipulating/subtract/>.
 
+### timezone
+
+Convert the date to a certain timezone
+
+```html
+<span>{{ date | moment('timezone', 'America/Los_Angeles', 'LLLL ss')}}</span>
+```
+
+**To use this filter you will need to pass `moment-timezone` through to the plugin**
+
+```js
+// main.js
+import Vue from 'vue'
+import VueMoment from 'vue-moment'
+import moment from 'moment-timezone'
+
+Vue.use(VueMoment, {
+    moment,
+})
+```
+
+For more information about `moment#timezone`, check out <https://momentjs.com/timezone/docs/#/using-timezones/converting-to-zone/>.
+
 
 ## Chaining
 
@@ -144,7 +167,6 @@ There's some built-in (and not thoroughly tested) support for chaining, like so:
 ```
 
 This would add 2 years and 8 months to the date, then subtract 3 hours, then format the resulting date.
-
 
 
 ## Configuration
