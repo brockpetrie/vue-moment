@@ -5,13 +5,13 @@ Handy [Moment.js](http://www.momentjs.com) filters for your [Vue.js](http://vuej
 
 ## Installation
 
-Install via NPM and 
+Install via NPM...
 
 ```sh
 $ npm install vue-moment
 ```
 
-Require the plugin like so:
+...and require the plugin like so:
 
 ```js
 Vue.use(require('vue-moment'));
@@ -29,7 +29,7 @@ Simply set `moment` as the filtering function and you're good to go. At least on
 
 ## Passing Your Date
 
-Moment.js expects your input to be either: a valid ISO 8601 formatted string (see <http://momentjs.com/docs/#/parsing/string/>), a valid `Date` object, or a date string with an accompanying format pattern (i.e. when you know the format of the date input). For the latter, `vue-moment` allows you to pass your date and format pattern(s) as an array, like such:
+Moment.js expects your input to be either: a valid ISO 8601 formatted string (see <http://momentjs.com/docs/#/parsing/string/>), a valid `Date` object, a Unix timestamp (must be passed as a Number), or a date string with an accompanying format pattern (i.e. when you know the format of the date input). For the latter, `vue-moment` allows you to pass your date and format pattern(s) as an array, like such:
 
 ```html
 <span>{{ [ someDate, "MM.DD.YY" ] | moment("dddd, MMMM Do YYYY") }}</span>
