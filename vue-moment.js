@@ -26,6 +26,9 @@ module.exports = {
 				// Format pattern will accept an array of potential formats to parse against.
 				// Date string should be at [0], format pattern(s) should be at [1]
 				date = moment(string = input[0], formats = input[1], true);
+			} else if (typeof input === 'number') {
+				// If input is an integer, assume it's a Unix timestamp.
+				date = moment.unix(input);
 			} else {
 				// Otherwise, throw the input at moment and see what happens...
 				date = moment(input);
