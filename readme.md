@@ -1,5 +1,5 @@
 # vue-moment
-[![npm version](https://badge.fury.io/js/vue-moment.svg)](https://badge.fury.io/js/vue-moment) [![Build Status](https://travis-ci.org/brockpetrie/vue-moment.svg?branch=master)](https://travis-ci.org/brockpetrie/vue-moment)
+[![NPM Version](https://badge.fury.io/js/vue-moment.svg)](https://www.npmjs.com/package/vue-moment) [![Build Status](https://travis-ci.org/brockpetrie/vue-moment.svg?branch=master)](https://travis-ci.org/brockpetrie/vue-moment) [![Monthly Downloads](https://img.shields.io/npm/dm/vue-moment.svg)](https://www.npmjs.com/package/vue-moment)
 
 Handy [Moment.js](http://www.momentjs.com) filters for your [Vue.js](http://vuejs.org/) project.
 
