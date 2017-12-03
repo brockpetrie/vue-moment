@@ -115,6 +115,14 @@ describe('VueMoment', () => {
         });
       });
 
+      it('utc', (done) => {
+        vm.args = ['utc'];
+        vm.$nextTick(() => {
+          expect(vm.$el.textContent).toContain(now.clone().utc().toISOString());
+          done();
+        });
+      });
+
       it('timezone', (done) => {
         vm.args = ['timezone', 'America/Los_Angeles'];
         vm.$nextTick(() => {
