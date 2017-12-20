@@ -20,7 +20,7 @@
     "moment.js"
   ],
   "author": "brockpetrie",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/brockpetrie/vue-moment/issues"
   },
