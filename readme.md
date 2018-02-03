@@ -1,5 +1,8 @@
 # vue-moment
-[![NPM Version](https://badge.fury.io/js/vue-moment.svg)](https://www.npmjs.com/package/vue-moment) [![Build Status](https://travis-ci.org/brockpetrie/vue-moment.svg?branch=master)](https://travis-ci.org/brockpetrie/vue-moment) [![Monthly Downloads](https://img.shields.io/npm/dm/vue-moment.svg)](https://www.npmjs.com/package/vue-moment)
+[![npm version](https://badge.fury.io/js/vue-moment.svg)](https://badge.fury.io/js/vue-moment)
+[![Build Status](https://travis-ci.org/brockpetrie/vue-moment.svg?branch=master)](https://travis-ci.org/brockpetrie/vue-moment)
+[![Monthly Downloads](https://img.shields.io/npm/dm/vue-moment.svg)](https://www.npmjs.com/package/vue-moment)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Handy [Moment.js](http://www.momentjs.com) filters for your [Vue.js](http://vuejs.org/) project.
 
@@ -29,7 +32,7 @@ Simply set `moment` as the filtering function and you're good to go. At least on
 
 ## Passing Your Date
 
-Moment.js expects your input to be either: a valid ISO 8601 formatted string (see <http://momentjs.com/docs/#/parsing/string/>), a valid `Date` object, a Unix timestamp (must be passed as a Number), or a date string with an accompanying format pattern (i.e. when you know the format of the date input). For the latter, `vue-moment` allows you to pass your date and format pattern(s) as an array, like such:
+Moment.js expects your input to be either: a valid ISO 8601 formatted string (see <http://momentjs.com/docs/#/parsing/string/>), a valid `Date` object, a Unix timestamp (in seconds, passed as a Number; if you'd like to pass milliseconds, send as a date object using `new Date(milliseconds)`), or a date string with an accompanying format pattern (i.e. when you know the format of the date input). For the latter, `vue-moment` allows you to pass your date and format pattern(s) as an array, like such:
 
 ```html
 <span>{{ [ someDate, "MM.DD.YY" ] | moment("dddd, MMMM Do YYYY") }}</span>
@@ -37,7 +40,7 @@ Moment.js expects your input to be either: a valid ISO 8601 formatted string (se
 <span>{{ [ someDate, ["MM.DD.YY", "MM-DD-YY", "MM-DD-YYYY"] ] | moment("dddd, MMMM Do YYYY") }}</span>
 ```
 
-As of 3.0.0, passing an empty or invalid input will no longer initiate moment with a new `Date` object.
+As of 3.0.0, passing an empty or invalid input will no longer initiate moment with a new `Date` object fallback.
 
 ## Filtering Methods
 
