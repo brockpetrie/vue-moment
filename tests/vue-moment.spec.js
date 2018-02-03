@@ -115,6 +115,14 @@ describe('VueMoment', () => {
         });
       });
 
+      it('utc', (done) => {
+        vm.args = ['utc'];
+        vm.$nextTick(() => {
+          expect(vm.$el.textContent).toContain(now.clone().utc().toISOString());
+          done();
+        });
+      });
+
       it('timezone', (done) => {
         vm.args = ['timezone', 'America/Los_Angeles'];
         vm.$nextTick(() => {
@@ -155,11 +163,11 @@ describe('VueMoment', () => {
     });
 
     it('handles numeric', (done) => {
-      vm.now = 1483228800;
-      vm.args = ['utc', 'YYYY-MM-DD'];
+      vm.now = 1484438400;
+      vm.args = ['YYYY-MM'];
       vm.$nextTick(() => {
         expect(console.warn).not.toBeCalled();
-        expect(vm.$el.textContent).toContain('2017-01-01');
+        expect(vm.$el.textContent).toContain('2017-01');
         done();
       });
     });
