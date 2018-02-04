@@ -8,6 +8,7 @@ Vue.use(VueMoment, {
 
 const now = moment();
 const tomorrow = moment().add(1, 'day');
+const period = 'P1D';
 
 const vm = new Vue({
   template: '<div>{{ now | moment(...args) }}</div>',
@@ -17,6 +18,17 @@ const vm = new Vue({
       args: [
         'YYYY-MM-DD',
       ],
+    };
+  },
+}).$mount();
+
+const vmd = new Vue({
+  template: '<div>{{ period | duration(...args) | duration(...formatter) }}</div>',
+  data() {
+    return {
+      period,
+      args: [],
+      formatter: ['humanize', true],
     };
   },
 }).$mount();
@@ -34,6 +46,7 @@ describe('VueMoment', () => {
     it('sets locale', () => {
       vm.$moment.locale('fr');
       expect(vm.$moment.locale()).toEqual('fr');
+      vm.$moment.locale('en');
     });
   });
 
@@ -137,6 +150,54 @@ describe('VueMoment', () => {
         vm.args = ['add', '2 days', 'subtract', '1 day', 'YYYY-MM-DD'];
         vm.$nextTick(() => {
           expect(vm.$el.textContent).toContain(now.clone().add(1, 'days').format('YYYY-MM-DD'));
+          done();
+        });
+      });
+    });
+
+    describe('durations', () => {
+      afterEach(() => {
+        vmd.period = period;
+        vmd.args = [];
+        vmd.formatter = ['humanize', true];
+      });
+
+      it('simple humanize', (done) => {
+        vmd.$nextTick(() => {
+          expect(vmd.$el.textContent).toContain('in a day');
+          done();
+        });
+      });
+
+      it('add', (done) => {
+        vmd.args = ['add', 'P1D'];
+        vmd.$nextTick(() => {
+          expect(vmd.$el.textContent).toContain('in 2 days');
+          done();
+        });
+      });
+
+      it('subtract', (done) => {
+        vmd.args = ['subtract', 'P2D'];
+        vmd.$nextTick(() => {
+          expect(vmd.$el.textContent).toContain('a day ago');
+          done();
+        });
+      });
+
+      it('to string', (done) => {
+        vmd.period = [5, 'days'];
+        vmd.formatter = ['toISOString'];
+        vmd.$nextTick(() => {
+          expect(vmd.$el.textContent).toContain('P5D');
+          done();
+        });
+      });
+
+      it('getter', (done) => {
+        vmd.formatter = ['asHours'];
+        vmd.$nextTick(() => {
+          expect(vmd.$el.textContent).toContain('24');
           done();
         });
       });
