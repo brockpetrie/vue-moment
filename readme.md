@@ -95,7 +95,7 @@ For more information about `moment#fromNow` and `moment#from`, check out <http:/
 
 ### calendar
 
-Formats a date with different strings depending on how close to a certain date (today by default) the date is.
+Formats a date with different strings depending on how close to a certain date (today by default) the date is. You can also pass a reference date and options.
 
 **Default** (calculates from current time)
 
@@ -109,6 +109,13 @@ Formats a date with different strings depending on how close to a certain date (
 ```html
 <span>{{ someDate | moment("calendar", "July 10 2011") }}</span>
 <!-- e.g. "7/10/2011" -->
+```
+
+**With options**
+
+```html
+<span>{{ new Date() | moment('add', '6 days', 'calendar', null, { nextWeek: '[Happens in a week]' }) }}</span>
+<!-- "Happens in a week" -->
 ```
 
 For more information about `moment#calendar`, check out <http://momentjs.com/docs/#/displaying/calendar-time/>.
