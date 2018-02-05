@@ -32,7 +32,7 @@ Simply set `moment` as the filtering function and you're good to go. At least on
 
 ## Passing Your Date
 
-Moment.js expects your input to be either: a valid ISO 8601 formatted string (see <http://momentjs.com/docs/#/parsing/string/>), a valid `Date` object, a Unix timestamp (in seconds, passed as a Number; if you'd like to pass milliseconds, send as a date object using `new Date(milliseconds)`), or a date string with an accompanying format pattern (i.e. when you know the format of the date input). For the latter, `vue-moment` allows you to pass your date and format pattern(s) as an array, like such:
+Moment.js expects your input to be either: a valid ISO 8601 formatted string (see <http://momentjs.com/docs/#/parsing/string/>), a valid `Date` object, a Unix timestamp (in seconds or milliseconds, passed as a Number), or a date string with an accompanying format pattern (i.e. when you know the format of the date input). For the latter, `vue-moment` allows you to pass your date and format pattern(s) as an array, like such:
 
 ```html
 <span>{{ [ someDate, "MM.DD.YY" ] | moment("dddd, MMMM Do YYYY") }}</span>
