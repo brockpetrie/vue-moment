@@ -27,8 +27,13 @@ module.exports = {
         // Date string should be at [0], format pattern(s) should be at [1]
         date = moment(input[0], input[1], true);
       } else if (typeof input === 'number') {
-        // If input is an integer, assume it's a Unix timestamp.
-        date = moment.unix(input);
+        if (input.toString().length < 12) {
+          // If input is an integer with fewer than 12 digits, assume Unix seconds...
+          date = moment.unix(input);
+        } else {
+          // ..otherwise, assume milliseconds.
+          date = moment(input);
+        }
       } else {
         // Otherwise, throw the input at moment and see what happens...
         date = moment(input);
