@@ -162,8 +162,18 @@ describe('VueMoment', () => {
       });
     });
 
-    it('handles numeric', (done) => {
+    it('handles numeric: seconds', (done) => {
       vm.now = 1484438400;
+      vm.args = ['YYYY-MM'];
+      vm.$nextTick(() => {
+        expect(console.warn).not.toBeCalled();
+        expect(vm.$el.textContent).toContain('2017-01');
+        done();
+      });
+    });
+
+    it('handles numeric: milliseconds', (done) => {
+      vm.now = 1484438400000;
       vm.args = ['YYYY-MM'];
       vm.$nextTick(() => {
         expect(console.warn).not.toBeCalled();
