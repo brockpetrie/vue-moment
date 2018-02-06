@@ -1,7 +1,7 @@
-var moment = require('moment');
-
 module.exports = {
 	install: function (Vue, options) {
+		var moment = options && options.moment ? options.moment : require('moment');
+		
 		Object.defineProperties(Vue.prototype, {
 			$moment: {
 				get: function() {
@@ -10,11 +10,7 @@ module.exports = {
 			},
 		});
 
-		if (options && options.moment) {
-			moment = options.moment
-		}
-
-		Vue.moment = moment;
+		Vue.moment = moment
 
 		Vue.filter('moment', function() {
 			var args = Array.prototype.slice.call(arguments),
