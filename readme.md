@@ -190,10 +190,6 @@ console.log(Vue.moment().locale()) //es
 
 ## this.$moment
 
-`vue-moment` attaches the momentjs instance to your Vue app as `this.$moment`
-
-## this.$moment
-
 `vue-moment` attaches the momentjs instance to your Vue app as `this.$moment`. 
 
 This allows you to call [the static methods momentjs provides](https://momentjs.com/docs/#/i18n/listing-months-weekdays/).
