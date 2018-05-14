@@ -1,7 +1,7 @@
 module.exports = {
 	install: function (Vue, options) {
 		var moment = options && options.moment ? options.moment : require('moment');
-		
+
 		Object.defineProperties(Vue.prototype, {
 			$moment: {
 				get: function() {
@@ -17,6 +17,9 @@ module.exports = {
 				input = args.shift(),
 				date;
 
+			// Guard: don't do anything if input is null or undefined
+			if (input == null) return;
+
 			if (Array.isArray(input) && typeof input[0] === 'string') {
 				// If input is array, assume we're being passed a format pattern to parse against.
 				// Format pattern will accept an array of potential formats to parse against.
@@ -30,9 +33,9 @@ module.exports = {
 				date = moment(input);
 			}
 
-			if (!input || !date.isValid()) {
+			if (!date.isValid()) {
 				// Log a warning if moment couldn't reconcile the input. Better than throwing an error?
-				console.warn('Could not build a valid `moment` object from input.');
+				console.warn('Could not build a valid `moment` object from input.', input);
 				return input;
 			}
 
@@ -99,7 +102,7 @@ module.exports = {
 
 						date = date.fromNow(removeSuffix);
 						break;
-						
+
 					case 'diff':
 
 						// Mutates the original moment by doing a difference with another date.

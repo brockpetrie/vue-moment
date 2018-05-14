@@ -59,7 +59,7 @@ describe('VueMoment', () => {
                     expect(vm.$el.textContent).toContain('a day ago')
                     done()
                 })
-            }) 
+            })
 
             it('remove prefix', (done) => {
                 vm.args = ['from', tomorrow, true]
@@ -67,7 +67,7 @@ describe('VueMoment', () => {
                     expect(vm.$el.textContent).toContain('a day')
                     done()
                 })
-            }) 
+            })
         })
 
         describe('calendar', () => {
@@ -77,7 +77,7 @@ describe('VueMoment', () => {
                     expect(vm.$el.textContent).toContain(now.calendar())
                     done()
                 })
-            }) 
+            })
         })
 
         describe('maths', () => {
@@ -87,7 +87,7 @@ describe('VueMoment', () => {
                     expect(vm.$el.textContent).toContain(now.clone().add(1, 'days').toISOString())
                     done()
                 })
-            }) 
+            })
 
             it('subtract', (done) => {
                 vm.args = ['subtract', '1 day']
@@ -95,7 +95,7 @@ describe('VueMoment', () => {
                     expect(vm.$el.textContent).toContain(now.clone().subtract(1, 'days').toISOString())
                     done()
                 })
-            }) 
+            })
 
             it('timezone', (done) => {
                 vm.args = ['timezone', 'America/Los_Angeles', '']
@@ -103,7 +103,7 @@ describe('VueMoment', () => {
                     expect(vm.$el.textContent).toContain(now.clone().tz('America/Los_Angeles').format())
                     done()
                 })
-            }) 
+            })
         })
 
         describe('chaining', () => {
@@ -113,35 +113,35 @@ describe('VueMoment', () => {
                     expect(vm.$el.textContent).toContain(now.clone().add(1, 'days').format('YYYY-MM-DD'))
                     done()
                 })
-            }) 
+            })
         })
     })
 
     describe('handle inputs', () => {
         beforeEach(() => {
-            global.console.warn = jest.fn()  
+            global.console.warn = jest.fn()
         })
 
         afterAll(() => {
             vm.now = moment()
-        }) 
+        })
 
         it('handles string', (done) => {
             vm.now = '2017-01-01'
             vm.args = ['YYYY-MM-DD']
             vm.$nextTick(() => {
                 expect(console.warn).not.toBeCalled()
-                expect(vm.$el.textContent).toContain('2017-01-01')                
+                expect(vm.$el.textContent).toContain('2017-01-01')
                 done()
             })
         })
-        
+
         it('handles object', (done) => {
             vm.now = {y: 2017, m: 1, d: 1}
             vm.args = ['YYYY-MM-DD']
             vm.$nextTick(() => {
                 expect(console.warn).not.toBeCalled()
-                expect(vm.$el.textContent).toContain('2017-01-01')                
+                expect(vm.$el.textContent).toContain('2017-01-01')
                 done()
             })
         })
@@ -151,7 +151,7 @@ describe('VueMoment', () => {
             vm.args = ['YYYY-MM-DD']
             vm.$nextTick(() => {
                 expect(console.warn).not.toBeCalled()
-                expect(vm.$el.textContent).toContain('2017-01-01')                
+                expect(vm.$el.textContent).toContain('2017-01-01')
                 done()
             })
         })
@@ -161,7 +161,7 @@ describe('VueMoment', () => {
             vm.args = ['YYYY-MM-DD']
             vm.$nextTick(() => {
                 expect(console.warn).not.toBeCalled()
-                expect(vm.$el.textContent).toContain('2017-01-01')                
+                expect(vm.$el.textContent).toContain('2017-01-01')
                 done()
             })
         })
@@ -169,11 +169,20 @@ describe('VueMoment', () => {
         it('handles undefined', (done) => {
             vm.now = undefined
             vm.$nextTick(() => {
-                expect(console.warn).toBeCalled()
+                expect(console.warn).not.toBeCalled()
+                expect(vm.$el.textContent).toBe('');
                 done()
             })
         })
-        
+
+        it('handles null', (done) => {
+            vm.now = null
+            vm.$nextTick(() => {
+                expect(console.warn).not.toBeCalled()
+                expect(vm.$el.textContent).toBe('');
+                done()
+            })
+        })
         it('handles invalid string', (done) => {
             vm.now = 'foo'
             vm.$nextTick(() => {
