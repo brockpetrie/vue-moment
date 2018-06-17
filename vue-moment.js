@@ -1,6 +1,6 @@
 module.exports = {
   install(Vue, options) {
-    var moment = options && options.moment ? options.moment : require('moment');
+    const moment = options && options.moment ? options.moment : require('moment');
 
     Object.defineProperties(Vue.prototype, {
       $moment: {
