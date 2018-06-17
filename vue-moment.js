@@ -1,7 +1,7 @@
-let moment = require('moment');
-
 module.exports = {
   install(Vue, options) {
+    var moment = options && options.moment ? options.moment : require('moment');
+
     Object.defineProperties(Vue.prototype, {
       $moment: {
         get() {
@@ -9,10 +9,6 @@ module.exports = {
         },
       },
     });
-
-    if (options && options.moment) {
-      moment = options.moment;
-    }
 
     Vue.moment = moment;
 

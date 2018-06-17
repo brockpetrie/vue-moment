@@ -233,3 +233,12 @@ Vue.use(require('vue-moment'), {
 
 console.log(Vue.moment().locale()) //es
 ```
+
+## this.$moment
+
+`vue-moment` attaches the momentjs instance to your Vue app as `this.$moment`. 
+
+This allows you to call [the static methods momentjs provides](https://momentjs.com/docs/#/i18n/listing-months-weekdays/).
+
+If you're using i18n, it allows you to change the locale globally by calling `this.$moment.locale(myNewLocale)`
+
