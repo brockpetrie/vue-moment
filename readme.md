@@ -1,7 +1,8 @@
 # vue-moment
-[![npm version](https://badge.fury.io/js/vue-moment.svg)](https://badge.fury.io/js/vue-moment) [![Build Status](https://travis-ci.org/brockpetrie/vue-moment.svg?branch=master)](https://travis-ci.org/brockpetrie/vue-moment)
+[![npm version](https://badge.fury.io/js/vue-moment.svg)](https://badge.fury.io/js/vue-moment)
+[![Build Status](https://travis-ci.org/brockpetrie/vue-moment.svg?branch=master)](https://travis-ci.org/brockpetrie/vue-moment)
+[![Monthly Downloads](https://img.shields.io/npm/dm/vue-moment.svg)](https://www.npmjs.com/package/vue-moment)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 
 Handy [Moment.js](http://www.momentjs.com) filters for your [Vue.js](http://vuejs.org/) project.
 
@@ -31,7 +32,7 @@ Simply set `moment` as the filtering function and you're good to go. At least on
 
 ## Passing Your Date
 
-Moment.js expects your input to be either: a valid ISO 8601 formatted string (see <http://momentjs.com/docs/#/parsing/string/>), a valid `Date` object, a Unix timestamp (in seconds, passed as a Number; if you'd like to pass milliseconds, send as a date object using `new Date(milliseconds)`), or a date string with an accompanying format pattern (i.e. when you know the format of the date input). For the latter, `vue-moment` allows you to pass your date and format pattern(s) as an array, like such:
+Moment.js expects your input to be either: a valid ISO 8601 formatted string (see <http://momentjs.com/docs/#/parsing/string/>), a valid `Date` object, a Unix timestamp (in seconds or milliseconds, passed as a Number), or a date string with an accompanying format pattern (i.e. when you know the format of the date input). For the latter, `vue-moment` allows you to pass your date and format pattern(s) as an array, like such:
 
 ```html
 <span>{{ [ someDate, "MM.DD.YY" ] | moment("dddd, MMMM Do YYYY") }}</span>
@@ -63,7 +64,7 @@ For more information about `moment#format`, check out <http://momentjs.com/docs/
 
 ### from
 
-Display a moment in relative time, either from now or from a specified date.
+Display a Moment in relative time, either from now or from a specified date.
 
 **Default** (calculates from current time)
 
@@ -94,7 +95,7 @@ For more information about `moment#fromNow` and `moment#from`, check out <http:/
 
 ### calendar
 
-Formats a date with different strings depending on how close to a certain date (today by default) the date is.
+Formats a date with different strings depending on how close to a certain date (today by default) the date is. You can also pass a reference date and options.
 
 **Default** (calculates from current time)
 
@@ -110,12 +111,19 @@ Formats a date with different strings depending on how close to a certain date (
 <!-- e.g. "7/10/2011" -->
 ```
 
+**With options**
+
+```html
+<span>{{ new Date() | moment('add', '6 days', 'calendar', null, { nextWeek: '[Happens in a week]' }) }}</span>
+<!-- "Happens in a week" -->
+```
+
 For more information about `moment#calendar`, check out <http://momentjs.com/docs/#/displaying/calendar-time/>.
 
 
 ### add
 
-Mutates the original moment by adding time.
+Mutates the original Moment by adding time.
 
 ```html
 <span>{{ someDate | moment("add", "7 days") }}</span>
@@ -169,6 +177,44 @@ There's some built-in (and not thoroughly tested) support for chaining, like so:
 ```
 
 This would add 2 years and 8 months to the date, then subtract 3 hours, then format the resulting date.
+
+
+## Durations
+
+`vue-moment` also provides a `duration` filter that leverages Moment's ability to parse, manipulate and display durations of time. Durations should be passed as either: a String of a valid ISO 8601 formatted duration, a Number of milliseconds, an Array containing a number and unit of measurement (for passing a number other than milliseconds), or an Object of values (for when multiple different units of measurement are needed).
+
+```html
+<span>{{ 3600000 | duration('humanize') }}</span>
+<!-- "an hour" -->
+<span>{{ 'PT1800S' | duration('humanize') }}</span>
+<!-- "30 minutes" -->
+<span>{{ [35, 'days'] | duration('humanize', true) }}</span>
+<!-- "in a month" -->
+```
+
+This filter is purely a pass-through proxy to `moment.duration` methods, so pretty much all the functions outlined in their [docs](https://momentjs.com/docs/#/durations/) are callable.
+
+```html
+<span>{{ [-1, 'minutes'] | duration('humanize', true) }}</span>
+<!-- "a minute ago" -->
+<span>{{ { days: 10, months: 1 } | duration('asDays') }}</span>
+<!-- "40" -->
+<span>{{ 'P3D' | duration('as', 'hours') }}</span>
+<!-- "72" -->
+```
+
+For manipulating a duration by either subtraction or addition, first use the relevant filter option, then chain your duration display filter.
+
+```html
+<span>{{ [1, 'minutes'] | duration('subtract', 120000) | duration('humanize', true) }}</span>
+<!-- "a minute ago" -->
+<span>{{ [-10, 'minutes'] | duration('add', 'PT11M') | duration('humanize', true) }}</span>
+<!-- "in a minute" -->
+<span>{{ [2, 'years'] | duration('add', 1, 'year') | duration('humanize') }}</span>
+<!-- "3 years" -->
+```
+
+`duration` is for contextless lengths of time; for comparing 2 dates, use the `diff` method rather than hacking around with Moment durations. For more information about `moment#duration`, check out <https://momentjs.com/docs/#/durations/>.
 
 
 ## Configuration
