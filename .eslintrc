@@ -8,5 +8,6 @@
     "prefer-destructuring": 0,
     "no-shadow": 0,
     "no-console": 0,
+    "global-require": 0
   }
 }
