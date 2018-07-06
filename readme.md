@@ -20,6 +20,18 @@ $ npm install vue-moment
 Vue.use(require('vue-moment'));
 ```
 
+...or add it to your component as a local filter:
+
+```js
+import {moment} from 'vue-moment'
+
+export default {
+  filters: {
+    moment
+  }
+}
+```
+
 ## Usage
 
 Simply set `moment` as the filtering function and you're good to go. At least one argument is expected, which the filter assumes to be a `format` string if the argument doesn't match any of the other filtering methods.
@@ -236,7 +248,7 @@ console.log(Vue.moment().locale()) //es
 
 ## this.$moment
 
-`vue-moment` attaches the momentjs instance to your Vue app as `this.$moment`. 
+`vue-moment` attaches the momentjs instance to your Vue app as `this.$moment`.
 
 This allows you to call [the static methods momentjs provides](https://momentjs.com/docs/#/i18n/listing-months-weekdays/).
 

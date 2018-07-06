@@ -33,6 +33,27 @@ const vmd = new Vue({
   },
 }).$mount();
 
+const vml = new Vue({
+  template: `<div>
+              <span>{{ now | moment-local(...args) }}</span>
+              <span>{{ period | duration-local(...args) | duration-local(...formatter) }}</span>
+            </div>`,
+  data() {
+    return {
+      now,
+      args: [
+        'YYYY-MM-DD',
+      ],
+      formatter: ['humanize', true],
+      period,
+    };
+  },
+  filters: {
+    'moment-local': VueMoment.moment,
+    'duration-local': VueMoment.duration
+  },
+}).$mount();
+
 describe('VueMoment', () => {
   describe('installing plugin', () => {
     it('loads prototype', () => {
@@ -290,4 +311,14 @@ describe('VueMoment', () => {
       });
     });
   });
+
+  describe('local plugin', () => {
+    it('supports moment', () => {
+      expect(vml.$el.textContent).toContain(now.format('YYYY-MM-DD'));
+    });
+
+    it('supports duration', () => {
+      expect(vmd.$el.textContent).toContain('in a day');
+    });
+  })
 });
