@@ -39,13 +39,14 @@ module.exports = {
 
       args = Array.prototype.slice.call(args);
       var input = args.shift();
+      console.log(input);
       var date = void 0;
 
       if (Array.isArray(input) && typeof input[0] === 'string') {
         // If input is array, assume we're being passed a format pattern to parse against.
         // Format pattern will accept an array of potential formats to parse against.
         // Date string should be at [0], format pattern(s) should be at [1]
-        date = moment(input[0], input[1], true);
+        date = moment(input[0], input[1].toUpperCase(), true);
       } else if (typeof input === 'number') {
         if (input.toString().length < 12) {
           // If input is an integer with fewer than 12 digits, assume Unix seconds...
@@ -73,6 +74,7 @@ module.exports = {
         }
 
         args = Array.prototype.slice.call(args);
+        console.log('args', args);
         var method = args.shift();
 
         switch (method) {
@@ -219,7 +221,7 @@ module.exports = {
               * http://momentjs.com/docs/#/displaying/format/
               */
 
-              var format = method;
+              var format = method.toUpperCase();
               date = date.format(format);
             }
         }
