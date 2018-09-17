@@ -1,5 +1,10 @@
 module.exports = {
   install(Vue, options) {
+    if (Vue.prototype.$moment) {
+      console.warn('`Vue.prototype.$moment` already defined, will stop redefining `$moment` property on Vue.prototype.');
+      return;
+    }
+
     const moment = options && options.moment ? options.moment : require('moment');
 
     Object.defineProperties(Vue.prototype, {
