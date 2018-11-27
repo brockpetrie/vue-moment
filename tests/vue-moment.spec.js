@@ -1,6 +1,6 @@
 import moment from 'moment-timezone';
 import Vue from 'vue/dist/vue';
-import VueMoment from '../vue-moment';
+import VueMoment from '../src/vue-moment';
 
 Vue.use(VueMoment, {
   moment,
