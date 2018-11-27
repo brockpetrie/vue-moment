@@ -7,7 +7,7 @@
   "types": "types/index.d.ts",
   "scripts": {
     "test": "jest",
-    "eslint": "eslint *.js",
+    "eslint": "eslint src/*.js",
     "build": "yarn bili --input src/vue-moment.js --plugins babel --format umd,es,cjs,umd-min"
   },
   "repository": {
