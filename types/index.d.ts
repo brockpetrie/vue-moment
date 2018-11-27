@@ -1,13 +1,12 @@
 
 import Vue, {PluginFunction} from 'vue';
-// @ts-ignore
 import moment from 'moment';
 
-declare const VueMoment: VueMoment
-export default VueMoment
 export interface VueMoment {
-  install: PluginFunction<never>
+  install: PluginFunction<never>;
 }
+declare const VueMoment: VueMoment;
+export default VueMoment;
 
 declare module 'vue/types/vue' {
   interface Vue {

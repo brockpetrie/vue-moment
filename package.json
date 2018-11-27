@@ -1,13 +1,14 @@
 {
   "name": "vue-moment",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Handy Moment.js filters for your Vue.js project",
   "main": "dist/vue-moment.js",
+  "module": "dist/vuetify.js",
   "types": "types/index.d.ts",
   "scripts": {
     "test": "jest",
     "eslint": "eslint *.js",
-    "build": "yarn bili --input vue-moment.js --plugins babel --format umd,es,cjs,umd-min"
+    "build": "yarn bili --input src/vue-moment.js --plugins babel --format umd,es,cjs,umd-min"
   },
   "repository": {
     "type": "git",
