@@ -3,7 +3,7 @@ import Vue, {PluginFunction} from 'vue';
 import moment from 'moment';
 
 export interface VueMoment {
-  install: PluginFunction<never>;
+  install: PluginFunction<any>;
 }
 declare const VueMoment: VueMoment;
 export default VueMoment;
