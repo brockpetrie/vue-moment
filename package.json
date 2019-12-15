@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/brockpetrie/vue-moment#readme",
   "dependencies": {
-    "moment": "^2.11.1"
+    "moment": "^2.19.2"
   },
   "peerDependencies": {
     "vue": ">=1.x.x"
