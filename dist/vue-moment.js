@@ -4533,13 +4533,15 @@ var vueMoment = {
   install: function install(Vue, options) {
     var moment$$1 = options && options.moment ? options.moment : moment;
 
-    Object.defineProperties(Vue.prototype, {
-      $moment: {
-        get: function get() {
-          return moment$$1;
+    if (!Object.prototype.hasOwnProperty.call(Vue, '$moment')) {
+      Object.defineProperties(Vue.prototype, {
+        $moment: {
+          get: function get() {
+            return moment$$1;
+          }
         }
-      }
-    });
+      });
+    }
 
     Vue.moment = moment$$1;
 
