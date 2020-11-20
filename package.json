@@ -38,6 +38,7 @@
     "babel-eslint": "^8.0.3",
     "babel-jest": "^21.2.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "bili": "^2.1.2",
     "eslint": "^4.12.1",
@@ -53,7 +54,7 @@
     "moment-timezone": "^0.5.14",
     "pre-commit": "^1.2.2",
     "rollup-plugin-babel": "^3.0.4",
-    "vue": "^2.5.2"
+    "vue": "^3.0.0"
   },
   "pre-commit": "eslint",
   "jest": {
