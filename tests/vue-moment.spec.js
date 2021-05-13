@@ -217,8 +217,7 @@ describe('VueMoment', () => {
       vm.now = '2017-01-01';
       vm.args = ['YYYY-MM-DD'];
       vm.$nextTick(() => {
-        expect(console.warn).not.toBeCalled();
-        expect(vm.$el.textContent).toContain('2017-01-01');
+        expect(vm.$el.textContent).toEqual('2017-01-01');
         done();
       });
     });
@@ -227,8 +226,7 @@ describe('VueMoment', () => {
       vm.now = 1484438400;
       vm.args = ['YYYY-MM'];
       vm.$nextTick(() => {
-        expect(console.warn).not.toBeCalled();
-        expect(vm.$el.textContent).toContain('2017-01');
+        expect(vm.$el.textContent).toEqual('2017-01');
         done();
       });
     });
@@ -237,8 +235,7 @@ describe('VueMoment', () => {
       vm.now = 1484438400000;
       vm.args = ['YYYY-MM'];
       vm.$nextTick(() => {
-        expect(console.warn).not.toBeCalled();
-        expect(vm.$el.textContent).toContain('2017-01');
+        expect(vm.$el.textContent).toEqual('2017-01');
         done();
       });
     });
@@ -247,8 +244,7 @@ describe('VueMoment', () => {
       vm.now = { y: 2017, m: 1, d: 1 };
       vm.args = ['YYYY-MM-DD'];
       vm.$nextTick(() => {
-        expect(console.warn).not.toBeCalled();
-        expect(vm.$el.textContent).toContain('2017-01-01');
+        expect(vm.$el.textContent).toEqual('2017-01-01');
         done();
       });
     });
@@ -257,8 +253,7 @@ describe('VueMoment', () => {
       vm.now = new Date(2017, 0, 1);
       vm.args = ['YYYY-MM-DD'];
       vm.$nextTick(() => {
-        expect(console.warn).not.toBeCalled();
-        expect(vm.$el.textContent).toContain('2017-01-01');
+        expect(vm.$el.textContent).toEqual('2017-01-01');
         done();
       });
     });
@@ -267,16 +262,7 @@ describe('VueMoment', () => {
       vm.now = moment('2017-01-01');
       vm.args = ['YYYY-MM-DD'];
       vm.$nextTick(() => {
-        expect(console.warn).not.toBeCalled();
-        expect(vm.$el.textContent).toContain('2017-01-01');
-        done();
-      });
-    });
-
-    it('handles undefined', (done) => {
-      vm.now = undefined;
-      vm.$nextTick(() => {
-        expect(console.warn).toBeCalled();
+        expect(vm.$el.textContent).toEqual('2017-01-01');
         done();
       });
     });
@@ -284,8 +270,24 @@ describe('VueMoment', () => {
     it('handles invalid string', (done) => {
       vm.now = 'foo';
       vm.$nextTick(() => {
-        expect(console.warn).toBeCalled();
-        expect(vm.$el.textContent).toContain('foo');
+        expect(vm.$el.textContent).toEqual('foo');
+        done();
+      });
+    });
+
+    it('handles undefined', (done) => {
+      vm.now = undefined;
+      vm.args = ['dddd'];
+      vm.$nextTick(() => {
+        expect(vm.$el.textContent).toEqual(moment().format('dddd'));
+        done();
+      });
+    });
+
+    it('handles null', (done) => {
+      vm.now = null;
+      vm.$nextTick(() => {
+        expect(vm.$el.textContent).toEqual('');
         done();
       });
     });
