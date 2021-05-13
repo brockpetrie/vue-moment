@@ -17,10 +17,10 @@ module.exports = {
       const input = args.shift();
       let date;
 
-      if (Array.isArray(input) && typeof input[0] === 'string') {
+      if (Array.isArray(input) && ['string', 'number'].includes(typeof input[0])) {
         // If input is array, assume we're being passed a format pattern to parse against.
         // Format pattern will accept an array of potential formats to parse against.
-        // Date string should be at [0], format pattern(s) should be at [1]
+        // Date should be at [0], format pattern(s) should be at [1]
         date = moment(input[0], input[1], true);
       } else if (typeof input === 'number') {
         if (input.toString().length < 12) {
