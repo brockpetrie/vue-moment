@@ -2,13 +2,15 @@ module.exports = {
   install(Vue, options) {
     const moment = options && options.moment ? options.moment : require('moment');
 
-    Object.defineProperties(Vue.prototype, {
-      $moment: {
-        get() {
-          return moment;
+    if (!Object.prototype.hasOwnProperty.call(Vue, '$moment')) {
+      Object.defineProperties(Vue.prototype, {
+        $moment: {
+          get() {
+            return moment;
+          },
         },
-      },
-    });
+      });
+    }
 
     Vue.moment = moment;
 
