@@ -20,6 +20,13 @@ $ npm install vue-moment
 Vue.use(require('vue-moment'));
 ```
 
+### Typescript (optional)
+If you project is using Typescript, you can add type infomation using a 3rd party lib
+
+```sh
+npm install @types/vue-moment --save-dev
+```
+
 ## Usage
 
 Simply set `moment` as the filtering function and you're good to go. At least one argument is expected, which the filter assumes to be a `format` string if the argument doesn't match any of the other filtering methods.
