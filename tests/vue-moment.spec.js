@@ -92,7 +92,7 @@ describe('VueMoment for Vue version 2 started', () => {
         });
 
         it('with options', (done) => {
-          vm.args = ['calendar', tomorrow, { lastDay: '[Yesterday]' }];
+          vm.args = ['calendar', tomorrow, {lastDay: '[Yesterday]'}];
           vm.$nextTick(() => {
             expect(vm.$el.textContent).toContain('Yesterday');
             done();
@@ -244,7 +244,7 @@ describe('VueMoment for Vue version 2 started', () => {
     });
 
     it('handles object', (done) => {
-      vm.now = { y: 2017, m: 1, d: 1 };
+      vm.now = {y: 2017, m: 1, d: 1};
       vm.args = ['YYYY-MM-DD'];
       vm.$nextTick(() => {
         expect(console.warn).not.toBeCalled();

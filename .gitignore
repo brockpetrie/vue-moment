@@ -2,6 +2,7 @@
 node_modules
 coverage/
 package-lock.json
+yarn.lock
 *.vim
 
 # Yarn Integrity file

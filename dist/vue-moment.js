@@ -254,7 +254,7 @@ module.exports = {
   install: function install(App, options) {
     var _moment = options && options.moment ? options.moment : require('moment');
 
-    if (parseInt(App.version, 1) >= 3) {
+    if (parseInt(App.version, 4) >= 3) {
       App.config.globalProperties.$moment = {
         get: function get() {
           return _moment;
