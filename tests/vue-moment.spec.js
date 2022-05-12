@@ -1,6 +1,6 @@
 import moment from 'moment-timezone';
 import Vue from 'vue/dist/vue';
-import VueMoment from '../vue-moment';
+import VueMoment from '../src/vue-moment';
 
 Vue.use(VueMoment, {
   moment,
@@ -11,7 +11,7 @@ const tomorrow = moment().add(1, 'day');
 const period = 'P1D';
 
 const vm = new Vue({
-  template: '<div>{{ now | moment(...args) }}</div>',
+  template: '<div>{{ $moment(now, ...args) }}</div>',
   data() {
     return {
       now,
@@ -23,7 +23,7 @@ const vm = new Vue({
 }).$mount();
 
 const vmd = new Vue({
-  template: '<div>{{ period | duration(...args) | duration(...formatter) }}</div>',
+  template: '<div>{{ $duration($duration(period, ...args), ...formatter) }}</div>',
   data() {
     return {
       period,
@@ -33,20 +33,20 @@ const vmd = new Vue({
   },
 }).$mount();
 
-describe('VueMoment', () => {
+describe('VueMoment for Vue version 2 started', () => {
   describe('installing plugin', () => {
     it('loads prototype', () => {
       expect(typeof vm.$moment).toEqual('function');
     });
 
     it('prototype works', () => {
-      expect(vm.$moment(now).format('YYYY-MM-DD')).toEqual(now.format('YYYY-MM-DD'));
+      expect(vm.moment(now).format('YYYY-MM-DD')).toEqual(now.format('YYYY-MM-DD'));
     });
 
     it('sets locale', () => {
-      vm.$moment.locale('fr');
-      expect(vm.$moment.locale()).toEqual('fr');
-      vm.$moment.locale('en');
+      vm.moment.locale('fr');
+      expect(vm.moment.locale()).toEqual('fr');
+      vm.moment.locale('en');
     });
   });
 
@@ -92,7 +92,7 @@ describe('VueMoment', () => {
         });
 
         it('with options', (done) => {
-          vm.args = ['calendar', tomorrow, { lastDay: '[Yesterday]' }];
+          vm.args = ['calendar', tomorrow, {lastDay: '[Yesterday]'}];
           vm.$nextTick(() => {
             expect(vm.$el.textContent).toContain('Yesterday');
             done();
@@ -244,7 +244,7 @@ describe('VueMoment', () => {
     });
 
     it('handles object', (done) => {
-      vm.now = { y: 2017, m: 1, d: 1 };
+      vm.now = {y: 2017, m: 1, d: 1};
       vm.args = ['YYYY-MM-DD'];
       vm.$nextTick(() => {
         expect(console.warn).not.toBeCalled();
