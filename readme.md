@@ -11,14 +11,14 @@ Handy [Moment.js](http://www.momentjs.com) filters for your [Vue.js](http://vuej
 Install via NPM...
 
 ```sh
-$ npm install @rah-emil/vue-moment
+$ npm install vue-moment
 ```
 
 ### Vue 2
 ```javascript
 import Vue from 'vue'
 import moment from 'moment'
-import vueMoment from '@rah-emil/vue-moment'
+import vueMoment from 'vue-moment'
 
 Vue.use(vueMoment, { moment })
 ```
@@ -27,7 +27,7 @@ Vue.use(vueMoment, { moment })
 ```javascript
 import { createApp } from 'vue'
 import moment from 'moment'
-import vueMoment from '@rah-emil/vue-moment'
+import vueMoment from 'vue-moment'
 import App from '@/components/App'
 
 const app = createApp(App)
@@ -56,9 +56,9 @@ Simply set `moment` as the filtering function and you're good to go. At least on
 Moment.js expects your input to be either: a valid ISO 8601 formatted string (see <http://momentjs.com/docs/#/parsing/string/>), a valid `Date` object, a Unix timestamp (in seconds or milliseconds, passed as a Number), or a date string with an accompanying format pattern (i.e. when you know the format of the date input). For the latter, `vue-moment` allows you to pass your date and format pattern(s) as an array, like such:
 
 ```html
-<span>{{ $moment([ someDate, "MM.DD.YY" ], "dddd, MMMM Do YYYY") }}</span>
+<span>{{ [ someDate, "MM.DD.YY" ] | moment("dddd, MMMM Do YYYY") }}</span>
 <!-- or when you want to parse against more than one pattern -->
-<span>{{ $moment([ someDate, ["MM.DD.YY", "MM-DD-YY", "MM-DD-YYYY"] ], "dddd, MMMM Do YYYY") }}</span>
+<span>{{ [ someDate, ["MM.DD.YY", "MM-DD-YY", "MM-DD-YYYY"] ] | moment("dddd, MMMM Do YYYY") }}</span>
 ```
 
 As of 3.0.0, passing an empty or invalid input will no longer initiate moment with a new `Date` object fallback.
@@ -165,26 +165,17 @@ Works the same as `add`, but mutates the original moment by subtracting time.
 
 For more information about `moment#subtract`, check out <http://momentjs.com/docs/#/manipulating/subtract/>.
 
-### localization & timezone
+### timezone
 
-**localization**
-```js
-// main.js
-import Vue from 'vue'
-import VueMoment from '@rah-emil/vue-moment'
-import moment from 'moment'
-import 'moment/locale/fr'
-
-// ... your vue app
-```
-
-**timezone**
 Convert the date to a certain timezone
+
 ```html
-<span>{{ $moment(date, 'timezone', 'America/Los_Angeles', 'LLLL ss')}}</span>
+<span>{{ date | moment('timezone', 'America/Los_Angeles', 'LLLL ss')}}</span>
 ```
-**To use this filter you will need to pass moment-timezone through to the plugin**
-```javascript
+
+**To use this filter you will need to pass `moment-timezone` through to the plugin**
+
+```js
 // main.js
 import Vue from 'vue'
 import VueMoment from 'src/vue-moment'
@@ -214,33 +205,33 @@ This would add 2 years and 8 months to the date, then subtract 3 hours, then for
 `vue-moment` also provides a `duration` filter that leverages Moment's ability to parse, manipulate and display durations of time. Durations should be passed as either: a String of a valid ISO 8601 formatted duration, a Number of milliseconds, an Array containing a number and unit of measurement (for passing a number other than milliseconds), or an Object of values (for when multiple different units of measurement are needed).
 
 ```html
-<span>{{ $duration(3600000, 'humanize') }}</span>
+<span>{{ 3600000 | duration('humanize') }}</span>
 <!-- "an hour" -->
-<span>{{ $duration('PT1800S', 'humanize') }}</span>
+<span>{{ 'PT1800S' | duration('humanize') }}</span>
 <!-- "30 minutes" -->
-<span>{{ $duration([35, 'days'], 'humanize', true) }}</span>
+<span>{{ [35, 'days'] | duration('humanize', true) }}</span>
 <!-- "in a month" -->
 ```
 
 This filter is purely a pass-through proxy to `moment.duration` methods, so pretty much all the functions outlined in their [docs](https://momentjs.com/docs/#/durations/) are callable.
 
 ```html
-<span>{{ $duration([-1, 'minutes'], 'humanize', true) }}</span>
+<span>{{ [-1, 'minutes'] | duration('humanize', true) }}</span>
 <!-- "a minute ago" -->
-<span>{{ $duration({ days: 10, months: 1 }, 'asDays') }}</span>
+<span>{{ { days: 10, months: 1 } | duration('asDays') }}</span>
 <!-- "40" -->
-<span>{{ $duration('P3D', 'as', 'hours') }}</span>
+<span>{{ 'P3D' | duration('as', 'hours') }}</span>
 <!-- "72" -->
 ```
 
 For manipulating a duration by either subtraction or addition, first use the relevant filter option, then chain your duration display filter.
 
 ```html
-<span>{{ $duration($duration([1, 'minutes'], 'subtract', 120000), 'humanize', true) }}</span>
+<span>{{ [1, 'minutes'] | duration('subtract', 120000) | duration('humanize', true) }}</span>
 <!-- "a minute ago" -->
-<span>{{ $duration($duration([-10, 'minutes'], 'add', 'PT11M'), 'humanize', true) }}</span>
+<span>{{ [-10, 'minutes'] | duration('add', 'PT11M') | duration('humanize', true) }}</span>
 <!-- "in a minute" -->
-<span>{{ $duration($duration([2, 'years'], 'add', 1, 'year'), 'humanize') }}</span>
+<span>{{ [2, 'years'] | duration('add', 1, 'year') | duration('humanize') }}</span>
 <!-- "3 years" -->
 ```
 
@@ -254,12 +245,14 @@ For manipulating a duration by either subtraction or addition, first use the rel
 You can also pass a custom Moment object through with the plugin options. This technique is especially useful for overcoming the browserify locale bug demonstrated in the docs <http://momentjs.com/docs/#/use-it/browserify/>
 
 ```js
-import moment from 'moment'
-import 'moment/locale/es'
+const moment = require('moment')
+require('moment/locale/es')
 
-// ... your Vue app
+Vue.use(require('src/vue-moment'), {
+    moment
+})
 
-console.log(App.moment().locale()) // es
+console.log(Vue.moment().locale()) //es
 ```
 
 ## this.$moment
