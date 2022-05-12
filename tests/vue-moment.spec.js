@@ -1,6 +1,6 @@
 import moment from 'moment-timezone';
 import Vue from 'vue/dist/vue';
-import VueMoment from '../vue-moment';
+import VueMoment from '../src/vue-moment';
 
 Vue.use(VueMoment, {
   moment,
@@ -33,7 +33,7 @@ const vmd = new Vue({
   },
 }).$mount();
 
-describe('VueMoment', () => {
+describe('VueMoment for Vue version 2 started', () => {
   describe('installing plugin', () => {
     it('loads prototype', () => {
       expect(typeof vm.$moment).toEqual('function');

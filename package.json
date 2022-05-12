@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "eslint": "eslint *.js",
-    "build": "yarn bili --input vue-moment.js --plugins babel --format umd,es,cjs,umd-min"
+    "build": "yarn bili --input src/vue-moment.js --plugins babel --format umd,es,cjs,umd-min"
   },
   "repository": {
     "type": "git",
@@ -53,7 +53,7 @@
     "moment-timezone": "^0.5.14",
     "pre-commit": "^1.2.2",
     "rollup-plugin-babel": "^3.0.4",
-    "vue": "^2.5.2"
+    "vue": "2.5.2"
   },
   "pre-commit": "eslint",
   "jest": {

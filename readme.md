@@ -17,7 +17,7 @@ $ npm install vue-moment
 ...and require the plugin like so:
 
 ```js
-Vue.use(require('vue-moment'));
+Vue.use(require('src/vue-moment'));
 ```
 
 ### Typescript (optional)
@@ -164,7 +164,7 @@ Convert the date to a certain timezone
 ```js
 // main.js
 import Vue from 'vue'
-import VueMoment from 'vue-moment'
+import VueMoment from 'src/vue-moment'
 import moment from 'moment-timezone'
 
 Vue.use(VueMoment, {
@@ -234,7 +234,7 @@ You can also pass a custom Moment object through with the plugin options. This t
 const moment = require('moment')
 require('moment/locale/es')
 
-Vue.use(require('vue-moment'), {
+Vue.use(require('src/vue-moment'), {
     moment
 })
 
@@ -243,7 +243,7 @@ console.log(Vue.moment().locale()) //es
 
 ## this.$moment
 
-`vue-moment` attaches the momentjs instance to your Vue app as `this.$moment`. 
+`vue-moment` attaches the momentjs instance to your Vue app as `this.$moment`.
 
 This allows you to call [the static methods momentjs provides](https://momentjs.com/docs/#/i18n/listing-months-weekdays/).
 

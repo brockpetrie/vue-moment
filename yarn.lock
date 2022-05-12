@@ -5055,9 +5055,10 @@ vue-template-es2015-compiler@^1.5.3, vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
-vue@^2.5.2:
+vue@2.5.2:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.2.tgz#fd367a87bae7535e47f9dc5c9ec3b496e5feb5a4"
+  integrity sha512-Au9rf8fPkBulFHfZ406UaQDd1jH9fqGRIM+0IHilrXnJ/0TeeMH4SBkNxWf2dGevl2S3aVeu0E/WklEv0/msag==
 
 walker@~1.0.5:
   version "1.0.7"
