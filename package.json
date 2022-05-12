@@ -1,5 +1,5 @@
 {
-  "name": "vue-moment",
+  "name": "@rah-emil/vue-moment",
   "version": "5.0.0",
   "description": "Handy Moment.js filters for your Vue.js project",
   "main": "dist/vue-moment.js",
