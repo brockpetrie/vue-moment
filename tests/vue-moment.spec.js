@@ -11,7 +11,7 @@ const tomorrow = moment().add(1, 'day');
 const period = 'P1D';
 
 const vm = new Vue({
-  template: '<div>{{ now | moment(...args) }}</div>',
+  template: '<div>{{ $moment(now, ...args) }}</div>',
   data() {
     return {
       now,
@@ -23,7 +23,7 @@ const vm = new Vue({
 }).$mount();
 
 const vmd = new Vue({
-  template: '<div>{{ period | duration(...args) | duration(...formatter) }}</div>',
+  template: '<div>{{ $duration($duration(period, ...args), ...formatter) }}</div>',
   data() {
     return {
       period,
@@ -40,13 +40,13 @@ describe('VueMoment for Vue version 2 started', () => {
     });
 
     it('prototype works', () => {
-      expect(vm.$moment(now).format('YYYY-MM-DD')).toEqual(now.format('YYYY-MM-DD'));
+      expect(vm.moment(now).format('YYYY-MM-DD')).toEqual(now.format('YYYY-MM-DD'));
     });
 
     it('sets locale', () => {
-      vm.$moment.locale('fr');
-      expect(vm.$moment.locale()).toEqual('fr');
-      vm.$moment.locale('en');
+      vm.moment.locale('fr');
+      expect(vm.moment.locale()).toEqual('fr');
+      vm.moment.locale('en');
     });
   });
 

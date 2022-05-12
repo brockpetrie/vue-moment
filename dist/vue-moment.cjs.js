@@ -248,64 +248,50 @@ var duration = function duration(args, moment) {
 
 module.exports = {
   install: function install(App, options) {
-    var _moment = options && options.moment ? options.moment : require('moment');
+    var moment = options && options.moment ? options.moment : require('moment');
 
     if (parseInt(App.version, 4) >= 3) {
-      App.config.globalProperties.$moment = {
-        get: function get() {
-          return _moment;
+      App.config.globalProperties.moment = moment;
+      App.config.globalProperties.$moment = function () {
+        var arguments$1 = arguments;
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+          args[_key] = arguments$1[_key];
         }
+
+        return momentFilter(args, moment);
       };
+      App.config.globalProperties.$duration = function () {
+        var arguments$1 = arguments;
 
-      App.config.globalProperties.$filters = {
-        moment: function moment() {
-          var arguments$1 = arguments;
-
-          for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments$1[_key];
-          }
-
-          return momentFilter(args, _moment);
-        },
-        duration: function duration$$1() {
-          var arguments$1 = arguments;
-
-          for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-            args[_key2] = arguments$1[_key2];
-          }
-
-          return duration(args, _moment);
+        for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+          args[_key2] = arguments$1[_key2];
         }
+
+        return duration(args, moment);
       };
     } else {
-      Object.defineProperties(App.prototype, {
-        $moment: {
-          get: function get() {
-            return _moment;
-          }
-        }
-      });
-
-      App.filter('moment', function () {
+      App.prototype.moment = moment;
+      App.prototype.$moment = function () {
         var arguments$1 = arguments;
 
         for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
           args[_key3] = arguments$1[_key3];
         }
 
-        return momentFilter(args, _moment);
-      });
-      App.filter('duration', function () {
+        return momentFilter(args, moment);
+      };
+      App.prototype.$duration = function () {
         var arguments$1 = arguments;
 
         for (var _len4 = arguments.length, args = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
           args[_key4] = arguments$1[_key4];
         }
 
-        return duration(args, _moment);
-      });
+        return duration(args, moment);
+      };
     }
 
-    App.moment = _moment;
+    App.moment = moment;
   }
 };

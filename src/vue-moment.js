@@ -6,27 +6,13 @@ module.exports = {
     const moment = options && options.moment ? options.moment : require('moment');
 
     if (parseInt(App.version, 4) >= 3) {
-      App.config.globalProperties.$moment = {
-        get() {
-          return moment;
-        },
-      };
-
-      App.config.globalProperties.$filters = {
-        moment: (...args) => momentFilter(args, moment),
-        duration: (...args) => durationFilter(args, moment),
-      };
+      App.config.globalProperties.moment = moment;
+      App.config.globalProperties.$moment = (...args) => momentFilter(args, moment);
+      App.config.globalProperties.$duration = (...args) => durationFilter(args, moment);
     } else {
-      Object.defineProperties(App.prototype, {
-        $moment: {
-          get() {
-            return moment;
-          },
-        },
-      });
-
-      App.filter('moment', (...args) => momentFilter(args, moment));
-      App.filter('duration', (...args) => durationFilter(args, moment));
+      App.prototype.moment = moment;
+      App.prototype.$moment = (...args) => momentFilter(args, moment);
+      App.prototype.$duration = (...args) => durationFilter(args, moment);
     }
 
     App.moment = moment;
