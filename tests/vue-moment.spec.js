@@ -253,6 +253,16 @@ describe('VueMoment', () => {
       });
     });
 
+    it('handles array', (done) => {
+      vm.now = [7, 'M'];
+      vm.args = ['MMMM'];
+      vm.$nextTick(() => {
+        expect(console.warn).not.toBeCalled();
+        expect(vm.$el.textContent).toContain('July');
+        done();
+      });
+    });
+
     it('handles Date object', (done) => {
       vm.now = new Date(2017, 0, 1);
       vm.args = ['YYYY-MM-DD'];
