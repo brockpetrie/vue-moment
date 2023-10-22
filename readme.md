@@ -17,7 +17,9 @@ $ npm install vue-moment
 ...and require the plugin like so:
 
 ```js
-Vue.use(require('vue-moment'));
+import VueMoment from 'vue-moment'
+
+Vue.use(VueMoment)
 ```
 
 ### Typescript (optional)
@@ -156,7 +158,7 @@ For more information about `moment#subtract`, check out <http://momentjs.com/doc
 Convert the date to a certain timezone
 
 ```html
-<span>{{ date | moment('timezone', 'America/Los_Angeles', 'LLLL ss')}}</span>
+<span>{{ date | moment('timezone', 'America/Los_Angeles', 'LLLL ss') }}</span>
 ```
 
 **To use this filter you will need to pass `moment-timezone` through to the plugin**
@@ -231,14 +233,15 @@ For manipulating a duration by either subtraction or addition, first use the rel
 You can also pass a custom Moment object through with the plugin options. This technique is especially useful for overcoming the browserify locale bug demonstrated in the docs <http://momentjs.com/docs/#/use-it/browserify/>
 
 ```js
-const moment = require('moment')
-require('moment/locale/es')
+import moment from 'moment'
+import 'moment/locale/es'
+import VueMoment from 'vue-moment'
 
-Vue.use(require('vue-moment'), {
-    moment
+Vue.use(VueMoment, {
+    moment,
 })
 
-console.log(Vue.moment().locale()) //es
+console.log(Vue.moment().locale()) // es
 ```
 
 ## this.$moment
@@ -248,4 +251,3 @@ console.log(Vue.moment().locale()) //es
 This allows you to call [the static methods momentjs provides](https://momentjs.com/docs/#/i18n/listing-months-weekdays/).
 
 If you're using i18n, it allows you to change the locale globally by calling `this.$moment.locale(myNewLocale)`
-
