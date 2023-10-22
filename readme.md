@@ -17,7 +17,10 @@ $ npm install vue-moment
 ...and require the plugin like so:
 
 ```js
-Vue.use(require('vue-moment'));
+import Vue from 'vue'
+import VueMoment from 'vue-moment'
+
+Vue.use(VueMoment);
 ```
 
 ### Typescript (optional)
