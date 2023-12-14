@@ -1,6 +1,6 @@
 {
   "name": "vue-moment",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Handy Moment.js filters for your Vue.js project",
   "main": "dist/vue-moment.js",
   "scripts": {
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/brockpetrie/vue-moment#readme",
   "dependencies": {
-    "moment": "^2.11.1"
+    "moment": "^2.19.2"
   },
   "peerDependencies": {
     "vue": ">=1.x.x"
