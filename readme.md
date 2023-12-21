@@ -167,6 +167,12 @@ import Vue from 'vue'
 import VueMoment from 'vue-moment'
 import moment from 'moment-timezone'
 
+// 4.0.0+
+Vue.use(VueMoment, {
+    moment: moment,
+})
+
+// 3.1.0 or earlier
 Vue.use(VueMoment, {
     moment,
 })
