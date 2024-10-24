@@ -53,7 +53,7 @@
     "moment-timezone": "^0.5.14",
     "pre-commit": "^1.2.2",
     "rollup-plugin-babel": "^3.0.4",
-    "vue": "^2.5.2"
+    "vue": "^3.0.0"
   },
   "pre-commit": "eslint",
   "jest": {
