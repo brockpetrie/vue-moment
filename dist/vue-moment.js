@@ -1847,10 +1847,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         return globalLocale;
     }
 
+    function isLocaleNameSane(name) {
+        // Prevent names that look like filesystem paths, i.e contain '/' or '\'
+        return name.match('^[^/\\\\]*$') != null;
+    }
+
     function loadLocale(name) {
         var oldLocale = null;
         // TODO: Find a better way to register and load all the locales in Node
-        if (!locales[name] && 'object' !== 'undefined' && module && module.exports) {
+        if (!locales[name] && 'object' !== 'undefined' && module && module.exports && isLocaleNameSane(name)) {
             try {
                 oldLocale = globalLocale._abbr;
                 var aliasedRequire = commonjsRequire;
